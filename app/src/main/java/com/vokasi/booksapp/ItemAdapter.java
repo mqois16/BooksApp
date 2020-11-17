@@ -1,6 +1,7 @@
 package com.vokasi.booksapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,14 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
         ItemData data=values.get(position);
         holder.titleText.setText(data.itemTitle);
         holder.authorText.setText(data.itemAuthor);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Context , DetailActivity.class);
+                intent.putExtra("DATA",data);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
